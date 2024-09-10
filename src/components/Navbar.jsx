@@ -22,6 +22,12 @@ const Navbar = () => {
           <Link to="/authorform">Author Form</Link>
           <Link to="/blogform">Blog Form</Link>
           <Link to="/bloglist">Blog List </Link>
+          <Link to="/create_author">Create Author</Link>
+          <Link to="/blogs">Create Blog</Link>
+          <Link to="/edit_blog">Edit Blog</Link>
+          <Link to="/login">Login</Link>
+
+
     
         {/* </div> */}
         {/* <button className='bg-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-600' onClick={handleclisk}>Blog Form</button> */}

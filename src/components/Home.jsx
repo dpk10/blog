@@ -5,17 +5,17 @@ import BlogForm from "./BlogForm";
 import BlogList from "./BlogList";
 
 const Home = () => {
-    const navigate=useNavigate();
-    const handleclisk=()=>{
-        navigate('/blogform')
-    }
+    // const navigate=useNavigate();
+    // const handleclisk=()=>{
+    //     navigate('/blogform')
+    // }
   return (
     <div>
-        <h2>Hello there..</h2>
+        {/* <h2>Hello there..</h2> */}
       <AuthorForm/>
       <BlogForm/>
       <BlogList/>
-      <button onClick={handleclisk}>Go to page</button>
+      {/* <button onClick={handleclisk}>Go to page</button> */}
     </div>
   )
 }

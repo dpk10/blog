@@ -12,7 +12,7 @@ const BlogForm = () => {
     <div className='bg-gray-100 flex items-center justify-center h-screen'>
      <div class="w-full max-w-lg bg-white shadow-md rounded-lg p-8">
         <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Create a Blog</h2>
-        <form action="#" method="POST">
+        <form>
             
             <div class="mb-4">
                 <label class="block text-gray-700 font-medium mb-2" for="title">Blog Title</label>

@@ -9,6 +9,10 @@ import BlogForm from './components/BlogForm'
 import BlogList from './components/BlogList'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
+import CreateAuthor from './pages/CreateAuthor'
+import CreateBlog from './pages/CreateBlog'
+import EditBlog from './pages/EditBlog'
+import Login from './pages/Login'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -17,7 +21,7 @@ function App() {
 
 
     <>
-  <h1 className="text-3xl font-bold underline">Hello, Tailwind CSS!</h1>
+  {/* <h1 className="text-3xl font-bold underline">Hello, Tailwind CSS!</h1> */}
 
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -46,6 +50,12 @@ function App() {
           <Route path='authorform' element={<AuthorForm/>}/>
           <Route path='blogform' element={<BlogForm/>}/>
           <Route path='bloglist' element={<BlogList/>}/>
+          <Route path='create_author' element={<CreateAuthor/>}/>
+          <Route path='blogs' element={<CreateBlog/>}/>
+          <Route path='edit_blog' element={<EditBlog/>}/>
+          <Route path='login' element={<Login/>}/>
+
+
         </Routes>
       </Router>
       
