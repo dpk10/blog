@@ -1,5 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import {backgroundImage} from 'react'
+import image from '../assets/authorPage.jpg'
 
 const AuthorForm = () => {
 
@@ -10,7 +12,11 @@ const AuthorForm = () => {
   }
 
   return (
-    <div className='bg-gray-200 flex items-center justify-center h-screen'>
+    <body>
+      <div style={{backgroundImage:`url(${image})`}}>
+
+      </div>
+       <div className='bg-gray-200 flex items-center justify-center h-screen'>
       {/* <h2 className='bg-slate-700'>Here regiter</h2> */}
       {/* <h2 className='bg-stone-700 font-bold text-slate-900 text-2xl'>Author Registration Form</h2><br/> */}
         
@@ -43,6 +49,8 @@ const AuthorForm = () => {
     </form>
   </div>
     </div>
+    </body>
+   
   )
 }
 
