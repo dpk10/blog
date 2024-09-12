@@ -1,42 +1,181 @@
-import React from 'react'
+import  { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const [registerData, setRegisterData] = useState({
+    title: 'Mr',
+    fname: '',
+    lname: '',
+    email: '',
+    password: ''
+  });
+
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: ''
+  });
+
+  // Handle registration input change
+  const handleRegisterChange = (e) => {
+    setRegisterData({
+      ...registerData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+ 
+  const handleLoginChange = (e) => {
+    setLoginData({
+      ...loginData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    axios.post('https://bloghub-1cq5.onrender.com/authors', registerData, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => {
+        toast.success('Registration successful!');
+        setIsRegistered(true);
+      })
+      .catch((error) => {
+        toast.error('Error registering. Please try again.');
+      });
+  };
+
+ 
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    axios.post('https://bloghub-1cq5.onrender.com/login', loginData, {
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then((response) => {
+        toast.success('Login successful!');
+      })
+      .catch((error) => {
+        toast.error('Login failed. Please check your credentials.');
+      });
+  };
+
   return (
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-6">
+      <ToastContainer />
+      
+      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
+        <h2 className="text-2xl font-bold mb-6 text-center">{isRegistered ? 'Login' : 'Register'}</h2>
 
-    <div className='bg-gray-100 flex items-center justify-center h-screen'>
-    
-  <div class="w-full max-w-sm bg-white rounded-lg shadow-md p-6">
-    <h2 class="text-2xl font-bold text-center text-gray-700 mb-6">Login</h2>
-    
-    <form  class="space-y-6">
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-        <input type="email" id="email" name="email" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your email" required></input>
+       
+        {!isRegistered && (
+          <form onSubmit={handleRegisterSubmit} className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Title:</label>
+              <select 
+                name="title" 
+                value={registerData.title} 
+                onChange={handleRegisterChange} 
+                className="w-full p-2 border rounded"
+              >
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-gray-700">First Name:</label>
+              <input 
+                type="text" 
+                name="fname" 
+                value={registerData.fname} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Last Name:</label>
+              <input 
+                type="text" 
+                name="lname" 
+                value={registerData.lname} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Email:</label>
+              <input 
+                type="email" 
+                name="email" 
+                value={registerData.email} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Password:</label>
+              <input 
+                type="password" 
+                name="password" 
+                value={registerData.password} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+            >
+              Register
+            </button>
+          </form>
+        )}
+
+      
+        {isRegistered && (
+          <form onSubmit={handleLoginSubmit} className="space-y-4">
+            <div>
+              <label className="block text-gray-700">Email:</label>
+              <input 
+                type="email" 
+                name="email" 
+                value={loginData.email} 
+                onChange={handleLoginChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Password:</label>
+              <input 
+                type="password" 
+                name="password" 
+                value={loginData.password} 
+                onChange={handleLoginChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
+            >
+              Login
+            </button>
+          </form>
+        )}
       </div>
-
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" class="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter your password" required></input>
-      </div>
-
-      <div class="flex items-center">
-        <input type="checkbox" id="remember_me" name="remember_me" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"></input>
-        <label for="remember_me" class="ml-2 block text-sm text-gray-900">Remember me</label>
-      </div>
-
-      <div>
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Login</button>
-      </div>
-    </form>
-
-    
-    <div class="mt-4 flex justify-between text-sm">
-      <a href="#" class="text-blue-500 hover:underline">Forgot your password?</a>
-      <a href="#" class="text-blue-500 hover:underline">Sign up</a>
     </div>
-  </div>
-    </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
