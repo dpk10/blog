@@ -23,9 +23,11 @@ const Navbar = () => {
           <Link to="/blogform">Blog Form</Link>
           <Link to="/bloglist">Blog List </Link>
           <Link to="/create_author">Create Author</Link>
-          <Link to="/blogs">Create Blog</Link>
+          <Link to="/blogs">Create Blog</Link>  
           <Link to="/edit_blog">Edit Blog</Link>
-          <Link to="/login">Login</Link>
+          <Link to="/login">Signup</Link>
+          
+
 
 
     

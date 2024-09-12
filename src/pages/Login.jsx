@@ -4,6 +4,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
+  const [isLogin, setIsLogin] = useState(true);
+
+  const toggleMode = () => {
+    setIsLogin(!isLogin);
+    setFormData({ title: '', fname: '', lname: '' ,email: '',password:''}); 
+  };
+
   const [isRegistered, setIsRegistered] = useState(false);
 
   const [registerData, setRegisterData] = useState({
@@ -64,14 +71,14 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-6">
+    <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center p-6">
       <ToastContainer />
       
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-bold mb-6 text-center">{isRegistered ? 'Login' : 'Register'}</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
 
        
-        {!isRegistered && (
+        {!isLogin && (
           <form onSubmit={handleRegisterSubmit} className="space-y-4">
             <div>
               <label className="block text-gray-700">Title:</label>
@@ -132,16 +139,21 @@ const Login = () => {
               />
             </div>
             <button 
-              type="submit" 
+              type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-            >
-              Register
+            >Signup 
+            
             </button>
+            <button onClick={toggleMode}>{isRegistered ? 'Create an account' : 'Already have an account? Login'}</button>
+            {/* <div className="text-sm text-center text-gray-500">
+            Already have an account? <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+              </div> */}
+              
           </form>
         )}
 
       
-        {isRegistered && (
+        {isLogin && (
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             <div>
               <label className="block text-gray-700">Email:</label>
@@ -165,12 +177,13 @@ const Login = () => {
                 className="w-full p-2 border rounded" 
               />
             </div>
-            <button 
+            <button
               type="submit" 
-              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
-            >
-              Login
+              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
+                Login
+              
             </button>
+            <button onClick={toggleMode}>{isLogin ? 'Create an account' : 'Already have an account? Login'}</button>
           </form>
         )}
       </div>
