@@ -2,6 +2,8 @@ import  { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logo from '../assets/login.jpg';
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -71,17 +73,22 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center p-6">
+    <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center p-6"  style={{
+      width: '100%',
+      height: '700px',
+      backgroundImage: `url(${logo})`,
+      
+    }} >
       <ToastContainer />
       
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
+      <div className="w-full max-w-md  shadow-md rounded-lg p-8 opacity-100">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
 
        
         {!isLogin && (
           <form onSubmit={handleRegisterSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700">Title:</label>
+              <label className="block text-cyan-700">Title:</label>
               <select 
                 name="title" 
                 value={registerData.title} 
@@ -156,7 +163,7 @@ const Login = () => {
         {isLogin && (
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             <div>
-              <label className="block text-gray-700">Email:</label>
+              <label className="block text-amber-700">Email:</label>
               <input 
                 type="email" 
                 name="email" 
@@ -167,7 +174,7 @@ const Login = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Password:</label>
+              <label className="block text-amber-700  ">Password:</label>
               <input 
                 type="password" 
                 name="password" 

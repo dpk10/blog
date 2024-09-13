@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to="/create_author">Create Author</Link>
           <Link to="/blogs">Create Blog</Link>  
           <Link to="/edit_blog">Edit Blog</Link>
-          <Link to="/login">Signup</Link>
+          <Link to="/login">Login</Link>
           
 
 
