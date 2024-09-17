@@ -5,7 +5,7 @@ const CreateBlog = () => {
   return (
     <div className=' flex justify-center items-center h-screen' style={{
       width: '1216px',
-      height: '700px',
+      height: '800px',
       backgroundImage: `url(${image})`,
       
     }}>
@@ -21,14 +21,13 @@ const CreateBlog = () => {
 
       
       <div>
-        <label for="author" class="block text-sm font-medium text-cyan-700">Author Name</label>
-        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author name" required></input>
-      </div>
-
-      
-      <div>
         <label for="content" class="block text-sm font-medium text-cyan-700">Blog Content</label>
         <textarea id="content" name="content" rows="8" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Write your blog content here" required></textarea>
+      </div>
+
+      <div>
+        <label for="author" class="block text-sm font-medium text-cyan-700">Author ID</label>
+        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author id" required></input>
       </div>
 
       
@@ -39,12 +38,22 @@ const CreateBlog = () => {
 
       
       <div>
-        <label for="image" class="block text-sm font-medium text-cyan-700">Upload Image</label>
-        <input type="file" id="image" name="image" class="mt-1 p-2 block w-full text-sm text-gray-500 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue-100"></input>
+        <label for="tags" class="block text-sm font-medium text-cyan-700">category</label>
+        <input type="text" id="tags" name="tags" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add category separated by commas"></input>
       </div>
 
       <div>
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Post</button>
+        <label for="tags" class="block text-sm font-medium text-cyan-700">Sub category</label>
+        <input type="text" id="tags" name="tags" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add sub category separated by commas"></input>
+      </div>
+
+      {/* <div>
+        <label for="image" class="block text-sm font-medium text-cyan-700">Upload Image</label>
+        <input type="file" id="image" name="image" class="mt-1 p-2 block w-full text-sm text-gray-500 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue-100"></input>
+      </div> */}
+
+      <div>
+        <button type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Post</button>
       </div>
     </form>
   </div>

@@ -13,6 +13,7 @@ import CreateAuthor from './pages/CreateAuthor'
 import CreateBlog from './pages/CreateBlog'
 import EditBlog from './pages/EditBlog'
 import Login from './pages/Login'
+import Logout from './pages/Logout'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -54,6 +55,7 @@ function App() {
           <Route path='blogs' element={<CreateBlog/>}/>
           <Route path='edit_blog' element={<EditBlog/>}/>
           <Route path='login' element={<Login/>}/>
+          <Route path='logout' element={<Logout/>}/>
 
 
 

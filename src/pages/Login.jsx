@@ -3,10 +3,17 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../assets/login.jpg';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate=useNavigate();
+
+  const handleLogin=()=>{
+    setIsLogin(true);
+    navigate('/')
+  }
 
   const toggleMode = () => {
     setIsLogin(!isLogin);
@@ -81,7 +88,7 @@ const Login = () => {
     }} >
       <ToastContainer />
       
-      <div className="w-full max-w-md  shadow-md rounded-lg p-8 opacity-100">
+      <div className="w-full max-w-md  shadow-md rounded-lg p-8 opacity-80">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
 
        
@@ -147,10 +154,10 @@ const Login = () => {
             </div>
             <button 
               type="submit"
-              className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+              className="w-20 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
             >Signup 
             
-            </button>
+            </button><br></br>
             <button onClick={toggleMode}>{isRegistered ? 'Create an account' : 'Already have an account? Login'}</button>
             {/* <div className="text-sm text-center text-gray-500">
             Already have an account? <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
@@ -184,12 +191,12 @@ const Login = () => {
                 className="w-full p-2 border rounded" 
               />
             </div>
-            <button
+            <button onClick={handleLogin}
               type="submit" 
-              className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
+              className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
                 Login
               
-            </button>
+            </button><br></br>
             <button onClick={toggleMode}>{isLogin ? 'Create an account' : 'Already have an account? Login'}</button>
           </form>
         )}
