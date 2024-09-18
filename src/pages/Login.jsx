@@ -8,8 +8,8 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const Login = () => {
-  const [username, setUsername] = useState('');
+const Login = ({ setIsAuthenticated }) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
 
@@ -17,8 +17,9 @@ const Login = () => {
   const navigate=useNavigate();
 
   const handleLogin=()=>{
-    if (username === 'email' && password === 'password') {
-      localStorage.setItem('authToken', 'your-token');
+    if (email === 'admin@gmail.com' && password === 'password') {
+      setIsAuthenticated(true);
+      // localStorage.setItem('authToken', 'your-token');
       history.push('/dashboard'); 
     } else {
       alert('Invalid credentials');
@@ -214,5 +215,7 @@ const Login = () => {
     </div>
   );
 };
+
+
 
 export default Login;
