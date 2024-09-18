@@ -4,15 +4,25 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../assets/login.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+
 
 
 const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+
   const [isLogin, setIsLogin] = useState(true);
   const navigate=useNavigate();
 
   const handleLogin=()=>{
-    setIsLogin(true);
-    navigate('/')
+    if (username === 'email' && password === 'password') {
+      localStorage.setItem('authToken', 'your-token');
+      history.push('/dashboard'); 
+    } else {
+      alert('Invalid credentials');
+    }
   }
 
   const toggleMode = () => {

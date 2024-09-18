@@ -14,6 +14,8 @@ import CreateBlog from './pages/CreateBlog'
 import EditBlog from './pages/EditBlog'
 import Login from './pages/Login'
 import Logout from './pages/Logout'
+import PrivateRoute from './pages/PrivateRoute'
+import Dashboard from './components/Dashboard'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -46,6 +48,7 @@ function App() {
       </p> */}
       <Router>
         <Navbar/>
+       
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='authorform' element={<AuthorForm/>}/>
@@ -56,6 +59,8 @@ function App() {
           <Route path='edit_blog' element={<EditBlog/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='logout' element={<Logout/>}/>
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+
 
 
 
