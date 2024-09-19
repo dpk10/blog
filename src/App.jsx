@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import react, { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -18,6 +18,7 @@ import PrivateRoute from './pages/PrivateRoute'
 import Dashboard from './components/Dashboard'
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   // const [count, setCount] = useState(0)
 
   return (
@@ -57,9 +58,17 @@ function App() {
           <Route path='create_author' element={<CreateAuthor/>}/>
           <Route path='blogs' element={<CreateBlog/>}/>
           <Route path='edit_blog' element={<EditBlog/>}/>
-          <Route path='login' element={<Login/>}/>
+          {/* <Route path='login' element={<Login/>}/> */}
           <Route path='logout' element={<Logout/>}/>
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route path="login">
+          <Login setIsAuthenticated={setIsAuthenticated} />
+        </Route>
+
+        <PrivateRoute
+          path="dashboard"
+          component={Dashboard}
+          isAuthenticated={isAuthenticated}
+        />
 
 
 
