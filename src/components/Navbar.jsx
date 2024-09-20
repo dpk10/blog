@@ -20,13 +20,24 @@ const Navbar = () => {
         {/* <div className='space-x-6'> */}
           {/* <link to="/">Home</link> */}
           <Link to="/dashboard">Dashboard</Link>
-          <Link to="/authorform">Author Form</Link>
-          <Link to="/blogform">Blog Form</Link>
+          {
+            localStorage.getItem('user-info')?
+            <>
+            <Link to="/create_author">Create Author</Link>
+            <Link to="/blogform">Blog Form</Link>
+            <Link to="/blogs">Create Blog</Link>  
+            </>
+            :
+            <>
+            <Link to="/authorform">Author Form</Link>
+          
           <Link to="/bloglist">Blog List </Link>
-          <Link to="/create_author">Create Author</Link>
-          <Link to="/blogs">Create Blog</Link>  
+          
           <Link to="/edit_blog">Edit Blog</Link>
           <Link to="/login">Login</Link>
+            </>
+          }
+          
           <Link to="/logout">Logout</Link>
           
 

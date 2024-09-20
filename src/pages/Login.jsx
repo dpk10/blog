@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,14 +11,24 @@ const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();  // Updated from useHistory to useNavigate
 
   const [isLogin, setIsLogin] = useState(true);
+  // useEffect(()=>{
+  //   if (localStorage.getItem('user-info')){
+  //     navigate('/dashboard')
+  //   }
+  // },[])
 
   const handleLogin = () => {
     if (email === 'email' && password === 'password') {
       setIsAuthenticated(true);
+      useEffect(()=>{
+        if (localStorage.getItem('user-info')){
+          navigate('/dashboard')
+        }
+      },[])
       // localStorage.setItem('authToken', 'your-token');
-      navigate('/user/dashboard');  
+      // navigate('/dashboard');  
     } else {
-      alert('Invalid credentials');
+      // alert('Invalid credentials');
     }
   };
 

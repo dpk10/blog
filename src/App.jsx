@@ -57,12 +57,6 @@ function App() {
        
         <Routes>
 
-          {!isLoggedIn && (
-          <>
-            <Route path="login" element={<Login/>} />
-          </>  
-          )}
-
          
           
          
@@ -77,13 +71,9 @@ function App() {
           <Route path='blogs' element={<CreateBlog/>}/>
           <Route path='edit_blog' element={<EditBlog/>}/>
           
-
-          <Route path='user' element={<PrivateRoute/>}>
+          <Route path='dashboard'>
+            <PrivateRoute cmp={Dashboard}/></Route> 
           
-          <Route path='dashboard' element={<Dashboard/>}/>
-          
-         
-          </Route>
           
           <Route path='/' element={<Home/>}/>
 
