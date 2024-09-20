@@ -2,7 +2,9 @@ import react, { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Routes,Route, Navigate} from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom';
+
 
 import AuthorForm from './components/AuthorForm'
 import BlogForm from './components/BlogForm'
@@ -18,7 +20,10 @@ import PrivateRoute from './pages/PrivateRoute'
 import Dashboard from './components/Dashboard'
 
 function App() {
+  const isLoggedIn=window.localStorage.getItem("loggedIn");
+  const userType=window.localStorage.getItem("userType");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const navigate = useNavigate();
   // const [count, setCount] = useState(0)
 
   return (
@@ -51,25 +56,36 @@ function App() {
         <Navbar/>
        
         <Routes>
-          <Route path='/' element={<Home/>}/>
+
+          {!isLoggedIn && (
+          <>
+            <Route path="login" element={<Login/>} />
+          </>  
+          )}
+
+         
+          
+         
+          
+          {/* <Route path='login' element={<Login/>}/> */}
+          <Route path='logout' element={<Logout/>}/>
+          <Route path="login" element={<Login/>} />
           <Route path='authorform' element={<AuthorForm/>}/>
           <Route path='blogform' element={<BlogForm/>}/>
           <Route path='bloglist' element={<BlogList/>}/>
           <Route path='create_author' element={<CreateAuthor/>}/>
           <Route path='blogs' element={<CreateBlog/>}/>
           <Route path='edit_blog' element={<EditBlog/>}/>
-          {/* <Route path='login' element={<Login/>}/> */}
-          <Route path='logout' element={<Logout/>}/>
-          <Route path="login">
-          <Login setIsAuthenticated={setIsAuthenticated} />
-        </Route>
+          
 
-        <PrivateRoute
-          path="dashboard"
-          component={Dashboard}
-          isAuthenticated={isAuthenticated}
-        />
-
+          <Route path='user' element={<PrivateRoute/>}>
+          
+          <Route path='dashboard' element={<Dashboard/>}/>
+          
+         
+          </Route>
+          
+          <Route path='/' element={<Home/>}/>
 
 
 

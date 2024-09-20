@@ -19,6 +19,7 @@ const Navbar = () => {
          </Link> 
         {/* <div className='space-x-6'> */}
           {/* <link to="/">Home</link> */}
+          <Link to="/dashboard">Dashboard</Link>
           <Link to="/authorform">Author Form</Link>
           <Link to="/blogform">Blog Form</Link>
           <Link to="/bloglist">Blog List </Link>
@@ -27,6 +28,8 @@ const Navbar = () => {
           <Link to="/edit_blog">Edit Blog</Link>
           <Link to="/login">Login</Link>
           <Link to="/logout">Logout</Link>
+          
+
           
 
 

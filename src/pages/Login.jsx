@@ -13,9 +13,10 @@ const Login = ({ setIsAuthenticated }) => {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleLogin = () => {
-    if (username === 'email' && password === 'password') {
-      localStorage.setItem('authToken', 'your-token');
-      navigate('/dashboard');  
+    if (email === 'email' && password === 'password') {
+      setIsAuthenticated(true);
+      // localStorage.setItem('authToken', 'your-token');
+      navigate('/user/dashboard');  
     } else {
       alert('Invalid credentials');
     }
@@ -97,8 +98,64 @@ const Login = ({ setIsAuthenticated }) => {
 
         {!isLogin && (
           <form onSubmit={handleRegisterSubmit} className="space-y-4">
-            {/* Registration form fields */}
-            {/* ... */}
+            <div>
+              <label className="block text-cyan-700">Title:</label>
+              <select 
+                name="title" 
+                value={registerData.title} 
+                onChange={handleRegisterChange} 
+                className="w-full p-2 border rounded"
+              >
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-gray-700">First Name:</label>
+              <input 
+                type="text" 
+                name="fname" 
+                value={registerData.fname} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Last Name:</label>
+              <input 
+                type="text" 
+                name="lname" 
+                value={registerData.lname} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Email:</label>
+              <input 
+                type="email" 
+                name="email" 
+                value={registerData.email} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700">Password:</label>
+              <input 
+                type="password" 
+                name="password" 
+                value={registerData.password} 
+                onChange={handleRegisterChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
             <button type="submit" className="w-20 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
               Signup
             </button><br />
@@ -110,9 +167,29 @@ const Login = ({ setIsAuthenticated }) => {
 
         {isLogin && (
           <form onSubmit={handleLoginSubmit} className="space-y-4">
-            {/* Login form fields */}
-            {/* ... */}
-            <button type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
+            <div>
+              <label className="block text-amber-700">Email:</label>
+              <input 
+                type="email" 
+                name="email" 
+                value={loginData.email} 
+                onChange={handleLoginChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <div>
+              <label className="block text-amber-700  ">Password:</label>
+              <input 
+                type="password" 
+                name="password" 
+                value={loginData.password} 
+                onChange={handleLoginChange} 
+                required 
+                className="w-full p-2 border rounded" 
+              />
+            </div>
+            <button onClick={handleLogin} type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
               Login
             </button><br />
             <button onClick={toggleMode}>
