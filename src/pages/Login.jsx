@@ -11,26 +11,25 @@ const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();  // Updated from useHistory to useNavigate
 
   const [isLogin, setIsLogin] = useState(true);
-  // useEffect(()=>{
-  //   if (localStorage.getItem('user-info')){
-  //     navigate('/dashboard')
-  //   }
-  // },[])
+
 
   const handleLogin = () => {
+    // localStorage.setItem('login',true);
+    // navigate('/dashboard')
     if (email === 'email' && password === 'password') {
       setIsAuthenticated(true);
-      useEffect(()=>{
-        if (localStorage.getItem('user-info')){
-          navigate('/dashboard')
-        }
-      },[])
-      // localStorage.setItem('authToken', 'your-token');
-      // navigate('/dashboard');  
+      navigate('/dashboard');  
     } else {
       // alert('Invalid credentials');
     }
-  };
+  }
+  useEffect(()=>{
+    // setIsAuthenticated(true);
+    let login=localStorage.getItem('login');
+    if (login){
+      navigate('/dashboard')
+    }
+  })
 
   const toggleMode = () => {
     setIsLogin(!isLogin);

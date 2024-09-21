@@ -3,15 +3,18 @@ import { Navigate, Outlet, Route} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const PrivateRoute = (props) => {
+  const {cmp}=props
   const navigate = useNavigate();
-  let cmp=props.cmp
+  
   useEffect(()=>{
-    if (localStorage.getItem('user-info')){
+    let login=localStorage.getItem('login');
+    if (!login){
       navigate('/login')
     }
-  },[])
+  })
   return (
 <div>
+  This is Private Route
   <cmp/>
 </div>
   )
