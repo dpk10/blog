@@ -87,7 +87,7 @@ const Login = ({ setIsAuthenticated }) => {
     })
       .then((response) => {
         toast.success('Login successful!');
-        navigate('/dashboard');  
+        // navigate('/dashboard');  
       })
       .catch((error) => {
         toast.error('Login failed. Please check your credentials.');
