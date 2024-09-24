@@ -30,7 +30,7 @@ const CreateBlog = () => {
 
     });
 
-    const handleBlogSubmit=(e)=>{
+    const handleBlogSubmit = (e)=>{
       e.preventDefault();
       axios.post('https://bloghub-1cq5.onrender.com/blogs', blogData, {
         headers: { 'Content-Type': 'application/json' }

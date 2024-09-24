@@ -93,7 +93,7 @@ const Login = ({ setIsAuthenticated }) => {
         toast.error('Login failed. Please check your credentials.');
       });
   };
-
+  
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center p-6" style={{
       width: '100%',

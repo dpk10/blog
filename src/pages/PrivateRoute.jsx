@@ -11,6 +11,7 @@ const PrivateRoute = (props) => {
     if (!login){
       navigate('/login')
     }
+    
   })
   return (
 <div>
