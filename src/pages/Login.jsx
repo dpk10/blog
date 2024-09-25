@@ -74,7 +74,7 @@ const Login = () => {
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     axios.post('https://bloghub-1cq5.onrender.com/authors', registerData, {
-      .then((res) => {})
+    
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => {
@@ -89,21 +89,24 @@ const Login = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios.post('https://bloghub-1cq5.onrender.com/login', loginData, {
-.then((res)=> 
-  localStorage.setItem("token", JSON.stringify(res))
+      
+headers : {"Content-Type": 'application/json'},
+
     })
       .then((response) => {
-        const loggedUser=JSON.parse(localStorage.getItem("user"));
-        if (
-          input.email===loggedUser.email && 
-          input.password===loggedUser.password
-        ){
-          localStorage.setItem("loggedIn",true);
-        }
-        localStorage.setItem("value", JSON.stringify(res.data.value) )
-        toast.success('Login successful!');
-        navigate('/bloglist');  
-      })
+        console.log("printing the response.....", response)
+       const token = response.data.token;
+
+       console.log("printing the tok4en ....", token)
+       if (token) {
+       localStorage.setItem("token", token)
+       toast.success('Login success!')
+       navigate('/bloglist')
+      } else {
+toast.error('login failed!');
+
+      }
+    })
       .catch((error) => {
         toast.error('Login failed. Please check your credentials.');
       });
