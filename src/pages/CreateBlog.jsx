@@ -55,7 +55,7 @@ const CreateBlog = () => {
           <div class="w-full max-w-lg  shadow-lg rounded-lg p-1 border-x-10 opacity-75 ">
     <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Create Blog Post</h2>
  
-    <form onSubmit={handleBlogSubmit} class="space-y-6">
+    <form  class="space-y-6">
       
       <div>
         <label for="title" class="block text-sm font-medium text-cyan-700">Post Title</label>

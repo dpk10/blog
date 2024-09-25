@@ -71,7 +71,7 @@ function App() {
           <Route path='blogs' element={<CreateBlog/>}/>
           <Route path='edit_blog' element={<EditBlog/>}/>
           
-          <Route path='dashboard' element={<PrivateRoute cmp={Dashboard}/>}/>
+          <Route path='dashboard' element={<Dashboard/>}/>
             
           
           

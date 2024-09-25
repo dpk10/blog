@@ -2,34 +2,39 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import logo from '../assets/login.jpg';
+import logo from '../assets/log1.jpg';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();  // Updated from useHistory to useNavigate
 
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true); 
 
 
-  const handleLogin = () => {
-    // localStorage.setItem('login',true);
-    // navigate('/dashboard')
-    if (email === 'email' && password === 'password') {
-      setIsAuthenticated(true);
-      navigate('/dashboard');  
-    } else {
-      // alert('Invalid credentials');
-    }
-  }
-  useEffect(()=>{
-    // setIsAuthenticated(true);
-    let login=localStorage.getItem('login');
-    if (login){
-      navigate('/dashboard')
-    }
-  })
+//   const handleLogin = () => {
+  
+//     const payload = {
+//       email:email,
+//       password:password
+      
+//           }
+//           console.log(payload);
+
+//           axios.post("https://bloghub-1cq5.onrender.com/login", payload)
+//           .then((res) => {
+
+//           localStorage.setItem("token", JSON.stringify(res.data.access_token) )
+
+//              console.log("Login success", res)
+//             toast.success('Login successful!');
+//           })
+//             .catch((err) => {
+//             console.log("Login failed", err)
+//              toast.error('Login failed. Please check your credentials.');
+// })
+//   } 
 
   const toggleMode = () => {
     setIsLogin(!isLogin);
@@ -69,6 +74,7 @@ const Login = ({ setIsAuthenticated }) => {
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     axios.post('https://bloghub-1cq5.onrender.com/authors', registerData, {
+      .then((res) => {})
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => {
@@ -83,11 +89,20 @@ const Login = ({ setIsAuthenticated }) => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     axios.post('https://bloghub-1cq5.onrender.com/login', loginData, {
-      headers: { 'Content-Type': 'application/json' }
+.then((res)=> 
+  localStorage.setItem("token", JSON.stringify(res))
     })
       .then((response) => {
+        const loggedUser=JSON.parse(localStorage.getItem("user"));
+        if (
+          input.email===loggedUser.email && 
+          input.password===loggedUser.password
+        ){
+          localStorage.setItem("loggedIn",true);
+        }
+        localStorage.setItem("value", JSON.stringify(res.data.value) )
         toast.success('Login successful!');
-        // navigate('/dashboard');  
+        navigate('/bloglist');  
       })
       .catch((error) => {
         toast.error('Login failed. Please check your credentials.');
@@ -102,7 +117,7 @@ const Login = ({ setIsAuthenticated }) => {
     }}>
       <ToastContainer />
 
-      <div className="w-full max-w-md shadow-md rounded-lg p-8 opacity-80">
+      <div className="w-full max-w-md shadow-md rounded-lg p-8 opacity-90">
         <h2 className="text-2xl font-bold mb-6 text-center">{isLogin ? 'Login' : 'Register'}</h2>
 
         {!isLogin && (
@@ -123,7 +138,7 @@ const Login = ({ setIsAuthenticated }) => {
             </div>
             <div>
               <label className="block text-gray-700">First Name:</label>
-              <input 
+              <input placeholder='Enter your first name'
                 type="text" 
                 name="fname" 
                 value={registerData.fname} 
@@ -134,7 +149,7 @@ const Login = ({ setIsAuthenticated }) => {
             </div>
             <div>
               <label className="block text-gray-700">Last Name:</label>
-              <input 
+              <input placeholder='Enter your last name'
                 type="text" 
                 name="lname" 
                 value={registerData.lname} 
@@ -145,7 +160,7 @@ const Login = ({ setIsAuthenticated }) => {
             </div>
             <div>
               <label className="block text-gray-700">Email:</label>
-              <input 
+              <input placeholder='Enter your email'
                 type="email" 
                 name="email" 
                 value={registerData.email} 
@@ -156,7 +171,7 @@ const Login = ({ setIsAuthenticated }) => {
             </div>
             <div>
               <label className="block text-gray-700">Password:</label>
-              <input 
+              <input placeholder='Enter your password'
                 type="password" 
                 name="password" 
                 value={registerData.password} 
@@ -178,7 +193,7 @@ const Login = ({ setIsAuthenticated }) => {
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             <div>
               <label className="block text-amber-700">Email:</label>
-              <input 
+              <input placeholder='Enter your email'
                 type="email" 
                 name="email" 
                 value={loginData.email} 
@@ -189,7 +204,7 @@ const Login = ({ setIsAuthenticated }) => {
             </div>
             <div>
               <label className="block text-amber-700  ">Password:</label>
-              <input 
+              <input placeholder='Enter your password'
                 type="password" 
                 name="password" 
                 value={loginData.password} 
@@ -198,7 +213,7 @@ const Login = ({ setIsAuthenticated }) => {
                 className="w-full p-2 border rounded" 
               />
             </div>
-            <button onClick={handleLogin} type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
+            <button  type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
               Login
             </button><br />
             <button onClick={toggleMode}>
