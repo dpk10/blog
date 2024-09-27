@@ -24,11 +24,13 @@ const CreateBlog = () => {
   });
 
   const handleSubmitChange=(e)=>{
+    console.log("error");
     setBlogData({
       ...blogData,
       [e.target.name]: e.target.value,
-
+      
     });
+  }
 
     const handleBlogSubmit = (e)=>{
       e.preventDefault();
@@ -36,6 +38,7 @@ const CreateBlog = () => {
         headers: { 'Content-Type': 'application/json' }
       })
         .then((response) => {
+          console.log("printing the response.....", response)
           toast.success('Blog Created successfully!');
           isCreatetBlog(true);
         })
@@ -43,7 +46,7 @@ const CreateBlog = () => {
           toast.error('Error creating blog. Please try again.');
         });
     }
-  }
+  
   return (
     <div className=' flex justify-center items-center h-screen' style={{
       width: '1216px',
@@ -55,11 +58,12 @@ const CreateBlog = () => {
           <div class="w-full max-w-lg  shadow-lg rounded-lg p-1 border-x-10 opacity-75 ">
     <h2 class="text-3xl font-bold mb-6 text-center text-blue-800">Create Blog Post</h2>
  
-    <form  class="space-y-6">
+    <form onSubmit={handleBlogSubmit} class="space-y-6">
       
       <div>
         <label for="title" class="block text-sm font-medium text-cyan-700">Post Title</label>
-        <input type="text" id="title" name="title"
+        <input type="text"
+         name="title"
         value={blogData.title}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter post title" required></input>
@@ -68,7 +72,8 @@ const CreateBlog = () => {
       
       <div>
         <label for="content" class="block text-sm font-medium text-cyan-700">Blog Content</label>
-        <textarea id="content" name="content"
+        <textarea 
+        name="body"
         value={blogData.body}
         onChange={handleSubmitChange}
          rows="8" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Write your blog content here" required></textarea>
@@ -76,7 +81,8 @@ const CreateBlog = () => {
 
       <div>
         <label for="author" class="block text-sm font-medium text-cyan-700">Author ID</label>
-        <input type="text" id="author" name="author"
+        <input type="text"
+         name="authorId"
         value={blogData.authorId}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author id" required></input>
@@ -85,7 +91,8 @@ const CreateBlog = () => {
       
       <div>
         <label for="tags" class="block text-sm font-medium text-cyan-700">Tags</label>
-        <input type="text" id="tags" name="tags"
+        <input type="text"
+         name="tags"
         value={blogData.tags}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add tags separated by commas"></input>
@@ -94,7 +101,8 @@ const CreateBlog = () => {
       
       <div>
         <label for="tags" class="block text-sm font-medium text-cyan-700">category</label>
-        <input type="text" id="tags" name="tags"
+        <input type="text"
+         name="category"
         value={blogData.category}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add category separated by commas"></input>
@@ -102,7 +110,8 @@ const CreateBlog = () => {
 
       <div>
         <label for="tags" class="block text-sm font-medium text-cyan-700">Sub category</label>
-        <input type="text" id="tags" name="tags"
+        <input type="text" 
+        name="subcategory"
         value={blogData.subcategory}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Add sub category separated by commas"></input>
@@ -114,7 +123,7 @@ const CreateBlog = () => {
       </div> */}
 
       <div>
-        <button type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Post</button>
+        <button  type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Post</button>
       </div>
     </form>
   </div>

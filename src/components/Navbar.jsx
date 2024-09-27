@@ -19,7 +19,7 @@ const Navbar = () => {
          </Link> 
         {/* <div className='space-x-6'> */}
           {/* <link to="/">Home</link> */}
-          <Link to="/dashboard">Dashboard</Link>
+          {/* <Link to="/dashboard">Dashboard</Link> */}
           
             
           

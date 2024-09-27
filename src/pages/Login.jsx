@@ -13,28 +13,7 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true); 
 
 
-//   const handleLogin = () => {
-  
-//     const payload = {
-//       email:email,
-//       password:password
-      
-//           }
-//           console.log(payload);
 
-//           axios.post("https://bloghub-1cq5.onrender.com/login", payload)
-//           .then((res) => {
-
-//           localStorage.setItem("token", JSON.stringify(res.data.access_token) )
-
-//              console.log("Login success", res)
-//             toast.success('Login successful!');
-//           })
-//             .catch((err) => {
-//             console.log("Login failed", err)
-//              toast.error('Login failed. Please check your credentials.');
-// })
-//   } 
 
   const toggleMode = () => {
     setIsLogin(!isLogin);

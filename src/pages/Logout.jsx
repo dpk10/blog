@@ -7,13 +7,14 @@ const Logout = () => {
 
     useEffect(() => {
        
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("token");
 
         navigate("/login");
     }, [navigate]);
+ console.log("log out");
   return (
     <div>
-            <h2>Logging out...</h2>
+          
 
     </div>
   )
