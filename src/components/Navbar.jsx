@@ -27,7 +27,7 @@ const Navbar = () => {
             <Link to="/blogform">Blog Form</Link>
             <Link to="/blogs">Create Blog</Link>  
           
-            <Link to="/authorform">Author Form</Link>
+            {/* <Link to="/authorform">Author Form</Link> */}
           
           <Link to="/bloglist">Blog List </Link>
           

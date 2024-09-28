@@ -2,6 +2,8 @@ import React from 'react'
 import logo  from '../assets/Eblog.jpg';
 
 const EditBlog = () => {
+
+  
   return (
     <div>
       <div className='bg-gray-100 flex justify-center items-center h-screen' style={{
@@ -16,16 +18,9 @@ const EditBlog = () => {
     <form class="space-y-6">
       
       <div>
-        <label for="title" class="block text-sm font-medium text-gray-700">Post Title</label>
-        <input type="text" id="title" name="title" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter post title" required></input>
+        <label for="title" class="block text-sm font-medium text-gray-700">Blog Title</label>
+        <input type="text" id="title" name="title" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter blog title" required></input>
       </div>
-
-      
-      <div>
-        <label for="author" class="block text-sm font-medium text-gray-700">Author Name</label>
-        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author name" required></input>
-      </div>
-
       
       <div>
         <label for="content" class="block text-sm font-medium text-gray-700">Blog Content</label>
@@ -33,7 +28,22 @@ const EditBlog = () => {
       </div>
 
       <div>
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Edit Post</button>
+        <label for="author" class="block text-sm font-medium text-gray-700">Tags</label>
+        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter tags" required></input>
+      </div>
+
+      <div>
+        <label for="author" class="block text-sm font-medium text-gray-700">Category</label>
+        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter category" required></input>
+      </div>
+
+      <div>
+        <label for="author" class="block text-sm font-medium text-gray-700">Sub Category</label>
+        <input type="text" id="author" name="author" class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter sub category" required></input>
+      </div>
+
+      <div>
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Update Blog</button>
       </div>
     </form>
   </div>
