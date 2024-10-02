@@ -38,6 +38,17 @@ const CreateBlog = () => {
         headers: { 'Content-Type': 'application/json' }
       })
         .then((response) => {
+
+          const token = response.data.token;
+
+       console.log("printing the tok4en ....", token)
+       if (token) {
+       localStorage.getItem("token", token)
+       toast.success('success!')
+      } else {
+toast.error(' failed!');
+
+      }
           console.log("printing the response.....", response)
           toast.success('Blog Created successfully!');
           isCreatetBlog(true);
@@ -122,8 +133,11 @@ const CreateBlog = () => {
         <input type="file" id="image" name="image" class="mt-1 p-2 block w-full text-sm text-gray-500 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-500 hover:file:bg-blue-100"></input>
       </div> */}
 
-      <div>
-        <button  type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit Post</button>
+      <div className='flex justify-around'>
+        <button  type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Create Blog</button>
+        {/* <button  type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Update Blog</button>
+        <button  type="submit" class=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Delete Blog</button> */}
+
       </div>
     </form>
   </div>

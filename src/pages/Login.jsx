@@ -57,6 +57,17 @@ const Login = () => {
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => {
+        const data=response.data._id;
+        console.log("printing the id:", id)
+        if (id) {
+          localStorage.setItem("id", _id)
+          console.log("User ID:", data._id);
+          toast.success('registration success!')
+            
+         } else {
+   toast.error('login failed!');
+   
+         }
         toast.success('Registration successful!');
         setIsRegistered(true);
       })
@@ -104,8 +115,9 @@ toast.error('login failed!');
 
         {!isLogin && (
           <form onSubmit={handleRegisterSubmit} className="space-y-4">
+            {/* <p>Your id is:{id}</p> */}
             <div>
-              <label className="block text-cyan-700">Title:</label>
+              <label className="block text-gray-700">Title:</label>
               <select 
                 name="title" 
                 value={registerData.title} 

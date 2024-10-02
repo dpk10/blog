@@ -3,15 +3,17 @@ import image  from '../assets/Cblog3.jpg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useParams } from 'react-router-dom'
 
 
 
 const CreateAuthor = () => {
+  const { token } = useParams();
   const [auther, setAuther] = useState(true);
   const [isAuther, isCreateAuther]=useState(false);
 
   const [autherData, setAutherData]=useState({
-    autherId: '',
+    // autherId: '',
     name:'',
     email: '',
     number: ''
@@ -28,7 +30,7 @@ const CreateAuthor = () => {
 
   const handleAutherSubmit = (e)=>{
     e.preventDefault();
-    axios.post("https://bloghub-1cq5.onrender.com/authors", autherData, {
+    axios.post("https://bloghub-1cq5.onrender.com/authors", autherData, { 
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => {
@@ -54,13 +56,13 @@ const CreateAuthor = () => {
     
     <form onSubmit={handleAutherSubmit} class="space-y-4">
       
-    <div>
+    {/* <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Auther ID</label>
         <input type="text"  name="autherId"
         value={autherData.autherId}
         onChange={handleSubmitChange}
          class="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter Author ID" required></input>
-      </div>
+      </div> */}
 
       <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Name</label>

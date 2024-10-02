@@ -1,8 +1,13 @@
 import React from 'react'
+// import { useParams } from 'react-router-dom'
 
 const BlogList = () => {
+
+  // const { token } = useParams();
+
   return (
     <div>
+      {/* <p>Your token is:{token}</p> */}
       <header class="bg-orange-400 text-white py-24 text-center">
     <h1 class="text-4xl font-bold">Welcome to My Blog</h1>
     <p class="mt-4 text-lg">Sharing knowledge, thoughts, and stories.</p>
