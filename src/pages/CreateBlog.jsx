@@ -17,7 +17,7 @@ const CreateBlog = () => {
   const [blogData, setBlogData]=useState({
     title: '',
     body:'',
-    authorId: '',
+    authorId: blogData.authorId,
     tags: '',
     category:'',
     subcategory: ''
