@@ -81,7 +81,7 @@ const CreateBlog = () => {
           <div>
             <label htmlFor="authorId" className="block text-sm font-medium text-cyan-700">Author ID</label>
             <input type="text" name="authorId" value={blogData.authorId} onChange={handleSubmitChange}
-              className="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author id" required />
+              className="mt-1 p-2 block w-full border border-gray-100 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Enter author id"  />
           </div>
 
           <div>
