@@ -5,7 +5,7 @@ import './App.css'
 import {BrowserRouter as Router,Routes,Route, Navigate} from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom';
 
-
+import { AuthProvider } from './context/AuthContext'
 import AuthorForm from './components/AuthorForm'
 import BlogForm from './components/BlogForm'
 import BlogList from './components/BlogList'
@@ -53,33 +53,26 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
       <Router>
+        <AuthProvider>
         <Navbar/>
        
-        <Routes>
-
+       <Routes>
          
-          
+         {/* <Route path='login' element={<Login/>}/> */}
+         <Route path='logout' element={<Logout/>}/>
+         <Route path="login" element={<Login/>} />
+         <Route path='authorform' element={<AuthorForm/>}/>
+         <Route path='blogform' element={<BlogForm/>}/>
+         <Route path='bloglist' element={<BlogList/>}/>
+         <Route path='create_author' element={<CreateAuthor/>}/>
+         <Route path='blogs' element={<CreateBlog/>}/>
+         <Route path='edit_blog' element={<EditBlog/>}/>
          
-          
-          {/* <Route path='login' element={<Login/>}/> */}
-          <Route path='logout' element={<Logout/>}/>
-          <Route path="login" element={<Login/>} />
-          <Route path='authorform' element={<AuthorForm/>}/>
-          <Route path='blogform' element={<BlogForm/>}/>
-          <Route path='bloglist' element={<BlogList/>}/>
-          <Route path='create_author' element={<CreateAuthor/>}/>
-          <Route path='blogs' element={<CreateBlog/>}/>
-          <Route path='edit_blog' element={<EditBlog/>}/>
-          
-          <Route path='dashboard' element={<Dashboard/>}/>
-            
-          
-          
-          <Route path='/' element={<Home/>}/>
-
-
-
-        </Routes>
+         <Route path='dashboard' element={<Dashboard/>}/>
+         <Route path='/' element={<Home/>}/>
+       </Routes>
+        </AuthProvider>
+       
       </Router>
       
     </>
