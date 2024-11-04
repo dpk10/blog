@@ -18,6 +18,7 @@ import Login from './pages/Login'
 import Logout from './pages/Logout'
 import PrivateRoute from './pages/PrivateRoute'
 import Dashboard from './components/Dashboard'
+import UpdateBlog from './pages/UpdateBlog'
 
 function App() {
   const isLoggedIn=window.localStorage.getItem("loggedIn");
@@ -70,6 +71,7 @@ function App() {
          
          <Route path='dashboard' element={<Dashboard/>}/>
          <Route path='/' element={<Home/>}/>
+         <Route path='updateblog' element={<UpdateBlog/>}/>
        </Routes>
         </AuthProvider>
        
