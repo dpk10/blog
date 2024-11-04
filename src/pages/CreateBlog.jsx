@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+// import { FaPen, FaTag, FaFolder, FaLayerGroup, FaPaperPlane } from 'react-icons/fa';
 
 const CreateBlog = () => {
   const { user } = useAuth();
@@ -42,7 +43,7 @@ const CreateBlog = () => {
     };
 
     try {
-      const result = CreateBlog(newBlog, token);
+      const result = CreateBlog(blogPayload, token);
       toast.success('Blog created successfully!');
       setBlogData({
         title: '',
@@ -54,6 +55,18 @@ const CreateBlog = () => {
     } catch (error) {
       toast.error('Failed to create blog. Please try again.');
       console.error('Error creating blog:', error);
+    }
+
+    if (!user) {
+      return (
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          className="min-h-screen flex items-center justify-center text-xl font-semibold text-red-500"
+        >
+          Please log in to create a blog
+        </motion.div>
+      );
     }
 
     axios.post('https://bloghub-1cq5.onrender.com/blogs', blogPayload, {
@@ -76,18 +89,6 @@ const CreateBlog = () => {
         console.log("Error:", error);
       });
   };
-
-  if (!user) {
-    return (
-      <motion.div 
-        initial={{ opacity: 0 }} 
-        animate={{ opacity: 1 }} 
-        className="min-h-screen flex items-center justify-center text-xl font-semibold text-red-500"
-      >
-        Please log in to create a blog
-      </motion.div>
-    );
-  }
 
   return (
     <div className='flex justify-center items-center h-screen'
