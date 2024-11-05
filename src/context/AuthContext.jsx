@@ -1,5 +1,6 @@
 import React from 'react'
 import { createContext, useContext, useState, useEffect } from 'react';
+import { loginAuthor, registerAuthor } from '../services/Api';
 import { jwtDecode } from 'jwt-decode';
 
 

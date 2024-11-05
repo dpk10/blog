@@ -4,8 +4,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../assets/log1.jpg';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
 
 const Login = () => {
+  const { login } =   useAuth();
+  const [loading, setLoading] = useState(false);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();  // Updated from useHistory to useNavigate
@@ -76,31 +81,46 @@ const Login = () => {
       });
   };
 
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
-    axios.post('https://bloghub-1cq5.onrender.com/login', loginData, {
+//   const handleLoginSubmit = (e) => {
+//     e.preventDefault();
+//     axios.post('https://bloghub-1cq5.onrender.com/login', loginData, {
       
-headers : {"Content-Type": 'application/json'},
+// headers : {"Content-Type": 'application/json'},
 
-    })
-      .then((response) => {
-        console.log("printing the response.....", response)
-       const token = response.data.token;
+//     })
+//       .then((response) => {
+//         console.log("printing the response.....", response)
+//        const token = response.data.token;
 
-       console.log("printing the tok4en ....", token)
-       if (token) {
-       localStorage.setItem("token", token)
-       toast.success('Login success!')
-       navigate('/bloglist')
-      } else {
-toast.error('login failed!');
+//        console.log("printing the tok4en ....", token)
+//        if (token) {
+//        localStorage.setItem("token", token)
+//        toast.success('Login success!')
+//        navigate('/bloglist')
+//       } else {
+// toast.error('login failed!');
 
-      }
-    })
-      .catch((error) => {
-        toast.error('Login failed. Please check your credentials.');
-      });
-  };
+//       }
+//     })
+//       .catch((error) => {
+//         toast.error('Login failed. Please check your credentials.');
+//       });
+//   };
+
+const handleLoginSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  try {
+    await login(loginData);
+    toast.success('Logged in successfully!');
+    navigate('/bloglist');
+  } catch (error) {
+    console.error('Login error:', error);
+    toast.error(error.response?.data?.message || 'Login failed. Please try again.');
+  } finally {
+    setLoading(false);
+  }
+};
   
   return (
     <div className="min-h-screen bg-gray-200 flex flex-col justify-center items-center p-6" style={{

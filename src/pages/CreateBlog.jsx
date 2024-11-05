@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { createBlog } from '../services/Api';
+
 // import { FaPen, FaTag, FaFolder, FaLayerGroup, FaPaperPlane } from 'react-icons/fa';
 
 const CreateBlog = () => {
@@ -30,6 +32,7 @@ const CreateBlog = () => {
 
     if (!user || !user.userId) {
       toast.error('User ID is missing. Please log in again.');
+      // console.log("hit submit");
       return;
     }
 
@@ -43,7 +46,7 @@ const CreateBlog = () => {
     };
 
     try {
-      const result = CreateBlog(blogPayload, token);
+      const result = createBlog (blogPayload, token);
       toast.success('Blog created successfully!');
       setBlogData({
         title: '',
@@ -69,25 +72,25 @@ const CreateBlog = () => {
       );
     }
 
-    axios.post('https://bloghub-1cq5.onrender.com/blogs', blogPayload, {
-      headers: { 'Content-Type': 'application/json' },
-    })
-      .then((response) => {
-        const token = response.data.token;
-        console.log("Printing the token....", token);
+    // axios.post('https://bloghub-1cq5.onrender.com/blogs', blogPayload, {
+    //   headers: { 'Content-Type': 'application/json' },
+    // })
+    //   .then((response) => {
+    //     const token = response.data.token;
+    //     console.log("Printing the token....", token);
 
-        if (token) {
-          localStorage.setItem("token", token);
-          toast.success('Blog created successfully!');
-        } else {
-          toast.error('Blog creation failed!');
-        }
-        console.log("Response data:", response);
-      })
-      .catch((error) => {
-        toast.error('Error creating blog. Please try again.');
-        console.log("Error:", error);
-      });
+    //     if (token) {
+    //       localStorage.setItem("token", token);
+    //       toast.success('Blog created successfully!');
+    //     } else {
+    //       toast.error('Blog creation failed!');
+    //     }
+    //     console.log("Response data:", response);
+    //   })
+    //   .catch((error) => {
+    //     toast.error('Error creating blog. Please try again.');
+    //     console.log("Error:", error);
+    //   });
   };
 
   return (
