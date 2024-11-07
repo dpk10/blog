@@ -11,8 +11,8 @@ const Login = () => {
   const { login } =   useAuth();
   const [loading, setLoading] = useState(false);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
   const navigate = useNavigate();  // Updated from useHistory to useNavigate
 
   const [isLogin, setIsLogin] = useState(true); 
