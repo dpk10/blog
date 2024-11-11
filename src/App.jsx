@@ -68,7 +68,6 @@ function App() {
          <Route path='create_author' element={<CreateAuthor/>}/>
          <Route path='blogs' element={<CreateBlog/>}/>
          <Route path='edit_blog' element={<EditBlog/>}/>
-         
          <Route path='dashboard' element={<Dashboard/>}/>
          <Route path='/' element={<Home/>}/>
          <Route path='updateblog' element={<UpdateBlog/>}/>
