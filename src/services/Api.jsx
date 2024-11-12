@@ -69,10 +69,10 @@ export const createBlog = async (blogData) => {
   }
 };
 
-
+//fetch blog
 export const fetchBlogs = async (authorId = null) => {
   try {
-    const url =  `/blogs?authorId=${authorId}`
+    const url = authorId ? `/blogs?authorId=${authorId}` : '/blogs';
     const response = await api.get(url);
     return response.data;
   } catch (error) {
