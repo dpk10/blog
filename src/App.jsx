@@ -60,7 +60,7 @@ function App() {
        <Routes>
          
          {/* <Route path='login' element={<Login/>}/> */}
-         <Route path='logout' element={<Logout/>}/>
+         {/* <Route path='logout' element={<Logout/>}/> */}
          <Route path="login" element={<Login/>} />
          <Route path='authorform' element={<AuthorForm/>}/>
          <Route path='blogform' element={<BlogForm/>}/>

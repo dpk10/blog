@@ -1,9 +1,11 @@
 // import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import { useAuth } from '../context/AuthContext';
 // import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+   const { user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   // const nav=useNavigate();
 
@@ -44,7 +46,7 @@ const Navbar = () => {
             
           
           
-          <NavLink className='text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'> <Link to="/logout">Logout</Link></NavLink>
+          <NavLink className='text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'> <button onClick={logout}>Logout</button></NavLink>
           
 
           

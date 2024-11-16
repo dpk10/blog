@@ -1,8 +1,10 @@
 import React from 'react'
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 
 const Logout = () => {
+  const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
