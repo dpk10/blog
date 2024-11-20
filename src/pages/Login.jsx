@@ -227,7 +227,7 @@ const handleLoginSubmit = async (e) => {
                 className="w-full p-2 border rounded" 
               />
             </div>
-            <button  type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600">
+            <button  type="submit" className="w-20 bg-green-500 text-white p-2 rounded hover:bg-green-600 ">
               Login
             </button><br />
             <button onClick={toggleMode}>
